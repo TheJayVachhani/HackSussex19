@@ -1,0 +1,39 @@
+[
+    {
+        "name": "colour_name",
+        "r":255,
+        "b":255,
+        "g":255
+    },
+    {
+        "name": "sams_colour",
+        "r":100,
+        "b":100,
+        "g":100
+    },{
+        "name": "willhelms_colour",
+        "r":110,
+        "b":110,
+        "g":110
+    },{
+        "name": "colour_name",
+        "r":255,
+        "b":255,
+        "g":255
+    },{
+        "name": "colour_name",
+        "r":255,
+        "b":255,
+        "g":255
+    },{
+        "name": "colour_name",
+        "r":255,
+        "b":255,
+        "g":255
+    },{
+        "name": "colour_name",
+        "r":255,
+        "b":255,
+        "g":255
+    }
+]
