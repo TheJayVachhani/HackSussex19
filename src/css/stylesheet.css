@@ -1,0 +1,36 @@
+html {
+    -webkit-font-smoothing: antialiased;
+}
+
+*{
+font-family: 'Quicksand', sans-serif;
+font-family: 'Inconsolata', monospace;
+}
+
+.title{
+    border-radius: 5px;
+    margin: 10px 5px;
+    padding: 10px;
+    text-align: center;
+}
+
+h1, h2, h3, h4, h5, h6, p, a, aside, underline {
+    margin-top: 0;
+}
+
+h1{
+    font-family: 'Inconsolata', monospace;
+    font-size: 10em;
+    font-weight: 300;
+    color: ivory;
+    align-content: center;
+}
+
+body {
+    background-color: black;
+}
+
+underline {
+    width: 50px;
+    float: left;
+}
