@@ -3,8 +3,9 @@ const app = express()
 const port = 3000
 const {generateColour} = require("./src/js/ColorGen");
 const {getColorNameFromRgb} = require("./src/js/ColorToUse");
+const index = require("./src/js/")
 
-app.get('/', (req, res) => res.send('Hello World!'))
+app.get('/', (req, res) => res.send("Hello World"))
 
 app.get('/colour', (req, res) => {
     const colour = generateColour()
