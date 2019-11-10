@@ -7,7 +7,20 @@ font-family: 'Quicksand', sans-serif;
 font-family: 'Inconsolata', monospace;
 }
 
+
+.start-button {
+    border-radius: 5px;
+    margin: 10px 5px;
+    padding: 10px;
+    border-style: solid;
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+  }
+
 .title{
+    display: flex;
+    flex-direction: column;
     border-radius: 5px;
     margin: 10px 5px;
     padding: 10px;

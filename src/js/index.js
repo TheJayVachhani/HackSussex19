@@ -1,9 +1,8 @@
 const express = require('express')
 const app = express()
 const port = 3000
-const {generateColour} = require("./src/js/ColorGen");
-const {getColorNameFromRgb} = require("./src/js/ColorToUse");
-const index = require("./src/js/")
+const {generateColour} = require("./ColorGen");
+const {getColorNameFromRgb} = require("./ColorToUse");
 
 app.get('/', (req, res) => res.send("Hello World"))
 
