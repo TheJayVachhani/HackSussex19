@@ -1,3 +1,6 @@
+// const express = require('express')
+// const app = express()
+// const port = 3000
 const colorList = [
     {
         "name": "Aquamarine",
@@ -126,6 +129,7 @@ const colorList = [
         "g":50
     }
 ];
+
 function getColorNameFromRgb(r,g,b){
     function computeMSE( pixR,  pixG,  pixB) {
         return Math.floor(((pixR - r) * (pixR - r) + (pixG - g) * (pixG - g) + (pixB - b)
@@ -190,7 +194,7 @@ function generateColour(){
                         function resetColour(){
                             const newColour = Math.floor((Math.random() * 255)) 
                             
-                            return   newColour
+                            return newColour
                         }
                         colourArray[remainingIndex] = resetColour()
                         let  newFlag = false;
@@ -245,3 +249,131 @@ function generateColour(){
     }
 
 }
+
+
+// dynamicallyLoadScript("./src/js/ColorGen.js");
+// dynamicallyLoadScript("./src/js/ColorToUse.js");
+
+// app.get('/colour', (req, res) => {
+//     var colour = generateColour()
+//     var twoClosest = getColorNameFromRgb(colour.r, colour.g, colour.b)
+//     res.send({generatedColour:colour, twoClosest}); 
+// })
+
+
+var colour = generateColour();
+console.log({colour});
+const {color1, color2} = getColorNameFromRgb(colour.r, colour.g, colour.b);
+const correctColour= color1;
+const incorrectColour =color2;
+console.log({color1, color2});
+
+// app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+
+function checkAnswer(){
+   //console.log(inputColour.name)
+   var buttonValueL = document.getElementById("left-Button").value;
+   var buttonValueR = document.getElementById("right-Button").value;
+   console.log(correctColour.name);
+   console.log(buttonValueR);
+   document.getElementById("left-Button").onclick = function(){
+    if(buttonValueL ==correctColour.name){
+        console.log("same")
+        app.get('/colour', (req, res) => {
+            var colour = generateColour()
+            var twoClosest = getColorNameFromRgb(colour.r, colour.g, colour.b)
+            res.send({generatedColour:colour, twoClosest}); 
+        })
+        //loadGamePage()
+    }
+
+   }
+
+   document.getElementById("right-Button").onclick = function(){
+    if(buttonValueR == correctColour.name ){
+        console.log("same")
+        app.get('/colour', (req, res) => {
+            var colour = generateColour()
+            var twoClosest = getColorNameFromRgb(colour.r, colour.g, colour.b)
+            res.send({generatedColour:colour, twoClosest}); 
+        })
+        
+       //loadGamePage()
+    }
+
+   }
+ 
+//    console.log(buttonValueL)
+//    console.log(buttonValueR)
+//    console.log(correctColour.name)
+    // if(buttonValueL == correctColour.name ){ //correctColour.name
+    //    //inputColour.InnerHTML = inputColour;
+    //     //$(".triggerCircle").toggleClass("drawn")
+    //     app.get('/colour', (req, res) => {
+    //         var colour = generateColour()
+    //         var twoClosest = getColorNameFromRgb(colour.r, colour.g, colour.b)
+    //         res.send({generatedColour:colour, twoClosest}); 
+    //     })
+    //     loadGamePage(generateColour());
+    // } else {
+    //     //$(".triggerCross").toggleClass("drawn")
+    //     //print game over
+    //     alert("Game Over!");
+    //     href = "./index.html" 
+    // }
+    href = "./index.html" 
+};
+
+function startGame(){
+
+    loadGamePage();
+
+    document.getElementById("left-Button").addEventListener("click",function() { 
+        checkAnswer(document.getElementById("left-Button").value);
+    });
+
+    document.getElementById("right-Button").addEventListener("click",function() { 
+        checkAnswer(document.getElementById("left-Button").value);
+    });
+
+    document.getElementById("help").addEventListener("click",help);
+}
+
+function loadGamePage(){ 
+    var leftButton = document.getElementById("left-Button")
+    var rightButton = document.getElementById("right-Button") 
+    leftButton.textContent = correctColour.name
+    rightButton.textContent = incorrectColour.name
+    console.log(correctColour.name)
+    document.getElementById("body").style.backgroundColor = 'rgb(' + colour.r + ',' + colour.b + ',' + colour.g + ')';
+    var int = Math.floor(Math.random() * 2); 
+    if(int == 0){
+        document.getElementById("left-Button").value = correctColour.name;
+        document.getElementById("left-Button").setAttribute("value",correctColour.name)
+        document.getElementById("right-Button").value = incorrectColour.name
+    } else {
+        document.getElementById("left-Button").value = incorrectColour.name
+        document.getElementById("right-Button").value = correctColour.name
+    }
+     
+}
+
+
+
+function help(){
+    alert("Yo click a colour in the corners to pick a colour");
+}
+
+startGame();
+
+/*$(document).ready(function(){
+var actualColour = ""
+var correctColour = "generate correct colour" ;
+var incorrectColour = "generate incorrect colour" ;
+$("button").click(function(){
+    $("left-Button").checkAnswer($("left-Button").value(),correctColour);
+    $("right-Button").checkAnswer($("right-Button").value(),correctColour);
+    $("help").help();
+});
+loadGamePage(actualColour,correctColour,incorrectColour);
+});*/
